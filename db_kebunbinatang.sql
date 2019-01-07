@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 07, 2019 at 07:53 AM
+-- Generation Time: Jan 07, 2019 at 05:08 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -27,14 +27,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_herbivora` (
-  `id_binatang` int(20) NOT NULL AUTO_INCREMENT,
-  `nama_binatang` int(30) NOT NULL,
-  `tipe_binatang` int(25) NOT NULL,
-  `jenis_binatang` int(25) NOT NULL,
-  `habitat` int(50) NOT NULL,
-  `berkembangbiak` int(30) NOT NULL,
+  `id_binatang` varchar(20) NOT NULL,
+  `nama_binatang` varchar(30) NOT NULL,
+  `jk` varchar(25) NOT NULL,
+  `jenis_binatang` varchar(25) NOT NULL,
+  `habitat` varchar(50) NOT NULL,
   PRIMARY KEY (`id_binatang`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -58,11 +57,12 @@ CREATE TABLE IF NOT EXISTS `tbl_karnivora` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_omnivora` (
-  `nama_binatang` int(30) NOT NULL,
-  `tipe_binatang` int(25) NOT NULL,
-  `jenis_binatang` int(25) NOT NULL,
-  `habitat` int(50) NOT NULL,
-  `berkembangbiak` int(30) NOT NULL
+  `id_binatang` varchar(30) NOT NULL,
+  `nama_binatang` varchar(30) NOT NULL,
+  `jk` varchar(25) NOT NULL,
+  `jenis_binatang` varchar(25) NOT NULL,
+  `habitat` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_binatang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
