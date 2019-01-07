@@ -7,13 +7,24 @@ package javakb.kelas;
 
 /**
  *
- * @author Priliyandi
+ * @author LITTLEnstein
  */
-public class Karnivora extends Binatang {
+public class Karnivora extends Binatang{
     private String habitat;
-    private String berkembangbiak;
     private String id;
+    
+    public String getNama() {
+        return nama;
+    }
 
+    public String getId() {
+        return id; //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public void setId(String id) {
+        this.id = id; //To change body of generated methods, choose Tools | Templates.
+    }
+    
     public String getHabitat() {
         return habitat;
     }
@@ -21,20 +32,6 @@ public class Karnivora extends Binatang {
     public void setHabitat(String habitat) {
         this.habitat = habitat;
     }
-    
-    public String getBerkembangbiak() {
-        return habitat;
-    }
 
-    public void setBerkembangbiak(String berkembangbiak) {
-        this.berkembangbiak = berkembangbiak;
-    }
     
-    public void setId(String id) {
-        this.id = id; //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public String getId() {
-        return id; //To change body of generated methods, choose Tools | Templates.
-    }
 }
