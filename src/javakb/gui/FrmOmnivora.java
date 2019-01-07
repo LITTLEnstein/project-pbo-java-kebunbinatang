@@ -6,30 +6,30 @@
 package javakb.gui;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javakb.dao.DaoKarnivora;
-import javakb.kelas.Karnivora;
-import javakb.service.ServiceKarnivora;
-import javakb.tablemodel.TableModelKarnivora;
+import javakb.dao.DaoOmnivora;
+import javakb.kelas.Omnivora;
+import javakb.service.ServiceOmnivora;
+import javakb.tablemodel.TableModelOmnivora;
 import javax.swing.JOptionPane;
 /**
  *
  * @author LITTLEnstein
  */
-public class FrmKarnivora extends javax.swing.JFrame {
+public class FrmOmnivora extends javax.swing.JFrame {
     
-    private ServiceKarnivora sk;
-    private TableModelKarnivora tableModelKarnivora = new TableModelKarnivora();
-    private Karnivora k;
+    private ServiceOmnivora so;
+    private TableModelOmnivora tableModelOmnivora = new TableModelOmnivora();
+    private Omnivora o;
     /**
-     * Creates new form FrmKarnivora
+     * Creates new form FrmOmnivora
      */
-    public FrmKarnivora() {
+    public FrmOmnivora() {
         initComponents();
         setLocationRelativeTo(this);
 
         try {
-            sk = new DaoKarnivora(){};
-            tableKarnivora.setModel(tableModelKarnivora);
+            so = new DaoOmnivora(){};
+            tableOmnivora.setModel(tableModelOmnivora);
             loadData();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
@@ -37,13 +37,9 @@ public class FrmKarnivora extends javax.swing.JFrame {
     }
     
     private void loadData() throws SQLException {
-        ArrayList<Karnivora> listKarnivora;
-        try {
-            listKarnivora = sk.getKarnivora();
-            tableModelKarnivora.setData(listKarnivora);
-        } catch (SQLException ex) {
-            throw ex;
-        }
+        ArrayList<Omnivora> listOmnivora;
+        listOmnivora = so.getOmnivora();
+        tableModelOmnivora.setData(listOmnivora);
     }
     
     private void refresh() throws SQLException {
@@ -74,7 +70,7 @@ public class FrmKarnivora extends javax.swing.JFrame {
         txtJk = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tableKarnivora = new javax.swing.JTable();
+        tableOmnivora = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnHome = new javax.swing.JButton();
@@ -99,7 +95,7 @@ public class FrmKarnivora extends javax.swing.JFrame {
 
         jLabel4.setText("Kelompok Binatang");
 
-        tableKarnivora.setModel(new javax.swing.table.DefaultTableModel(
+        tableOmnivora.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -110,18 +106,18 @@ public class FrmKarnivora extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tableKarnivora.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableOmnivora.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableKarnivoraMouseClicked(evt);
+                tableOmnivoraMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tableKarnivora);
+        jScrollPane2.setViewportView(tableOmnivora);
 
-        jPanel1.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 0));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Binatang Karnivora");
+        jLabel1.setText("Binatang Omnivora");
 
         btnHome.setBackground(new java.awt.Color(0, 102, 255));
         btnHome.setForeground(new java.awt.Color(255, 255, 255));
@@ -140,17 +136,17 @@ public class FrmKarnivora extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jLabel5.setText("Habitat");
@@ -162,12 +158,6 @@ public class FrmKarnivora extends javax.swing.JFrame {
         });
 
         jLabel7.setText("Kode");
-
-        txtId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
-            }
-        });
 
         btnInsert.setBackground(new java.awt.Color(0, 255, 0));
         btnInsert.setForeground(new java.awt.Color(255, 255, 255));
@@ -308,7 +298,7 @@ public class FrmKarnivora extends javax.swing.JFrame {
                         .addGap(22, 22, 22)))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
         );
 
         pack();
@@ -316,9 +306,10 @@ public class FrmKarnivora extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        int index = tableKarnivora.getSelectedRow();
+        int index = tableOmnivora.getSelectedRow();
         if (index != -1) {
-            Karnivora k = tableModelKarnivora.getKarnivora(tableKarnivora.convertRowIndexToModel(index));
+            Omnivora o;
+            o = tableModelOmnivora.getOmnivora(tableOmnivora.convertRowIndexToModel(index));
             
             String id = txtId.getText();
             String nama = txtNama.getText();
@@ -328,16 +319,16 @@ public class FrmKarnivora extends javax.swing.JFrame {
             
 
             
-            k.setNama(nama);
-            k.setJk(jk);
-            k.setJenis(jenis);
-            k.setHabitat(habitat);
-            k.setId(id);
+            o.setNama(nama);
+            o.setJk(jk);
+            o.setJenis(jenis);
+            o.setHabitat(habitat);
+            o.setId(id);
             
 
             try {
-                sk.updateKarnivora(k);
-                tableModelKarnivora.updateKarnivora(index, k);
+                so.updateOmnivora(o);
+                tableModelOmnivora.updateOmnivora(index, o);
                 refresh();
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(rootPane, ex.getMessage());
@@ -347,13 +338,14 @@ public class FrmKarnivora extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int index = tableKarnivora.getSelectedRow();
+        int index = tableOmnivora.getSelectedRow();
         if (index != -1) {
-            Karnivora k = tableModelKarnivora.getKarnivora(tableKarnivora.convertRowIndexToModel(index));
+            Omnivora o;
+            o = tableModelOmnivora.getOmnivora(tableOmnivora.convertRowIndexToModel(index));
             if (JOptionPane.showConfirmDialog(null, "Apakah Yakin Di Hapus?", "konfirmasi", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
                 try {
-                    sk.deleteKarnivora(k);
-                    tableModelKarnivora.deleteKarnivora(index);
+                    so.deleteOmnivora(o);
+                    tableModelOmnivora.deleteOmnivora(index);
                     refresh();
                     JOptionPane.showMessageDialog(rootPane, "Data berhasil dihapus!");
                 } catch (SQLException ex) {
@@ -371,18 +363,19 @@ public class FrmKarnivora extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRefreshActionPerformed
 
-    private void tableKarnivoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableKarnivoraMouseClicked
+    private void tableOmnivoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableOmnivoraMouseClicked
         // TODO add your handling code here:
-        int index = tableKarnivora.getSelectedRow();
+        int index = tableOmnivora.getSelectedRow();
         if (index != -1) {
-            Karnivora k = tableModelKarnivora.getKarnivora(tableKarnivora.convertRowIndexToModel(index));
-            txtId.setText(k.getId());
-            txtNama.setText(k.getNama());
-            txtJk.setText(k.getJk());
-            txtJenis.setText(k.getJenis());
-            txtHabitat.setText(k.getHabitat());
+            Omnivora o;
+            o = tableModelOmnivora.getOmnivora(tableOmnivora.convertRowIndexToModel(index));
+            txtId.setText(o.getId());
+            txtNama.setText(o.getNama());
+            txtJk.setText(o.getJk());
+            txtJenis.setText(o.getJenis());
+            txtHabitat.setText(o.getHabitat());
         }
-    }//GEN-LAST:event_tableKarnivoraMouseClicked
+    }//GEN-LAST:event_tableOmnivoraMouseClicked
 
     private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
         // TODO add your handling code here:
@@ -392,16 +385,16 @@ public class FrmKarnivora extends javax.swing.JFrame {
         String jenis = txtJenis.getText();
         String habitat = txtHabitat.getText();
 
-        Karnivora k = new Karnivora();
-        k.setId(id);
-        k.setNama(nama);
-        k.setJk(jk);
-        k.setJenis(jenis);
-        k.setHabitat(habitat);
+        Omnivora o = new Omnivora();
+        o.setId(id);
+        o.setNama(nama);
+        o.setJk(jk);
+        o.setJenis(jenis);
+        o.setHabitat(habitat);
 
         try {
-            sk.insertKarnivora(k);
-            tableModelKarnivora.insertKarnivora(k);
+            so.insertOmnivora(o);
+            tableModelOmnivora.insertOmnivora(o);
             refresh();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(rootPane, ex.getMessage());
@@ -412,14 +405,10 @@ public class FrmKarnivora extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHabitatActionPerformed
 
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
-
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
-        FrmMain fm = new FrmMain();
-        fm.setVisible(true);
+        FrmMain fk = new FrmMain();
+        fk.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnHomeActionPerformed
     
@@ -441,7 +430,7 @@ public class FrmKarnivora extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable tableKarnivora;
+    private javax.swing.JTable tableOmnivora;
     private javax.swing.JTextField txtHabitat;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtJenis;
